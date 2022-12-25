@@ -16,12 +16,15 @@ monorepo.
 - If the current path is already the root directory path, it will
   offer a completion to jump to any subprojects.
 
+
 #+BEGIN_SRC
   ~/Projects/monorepo/packages/my-subpackage/folder/folder2/file.ts ->  
   ~/Projects/monorepo/packages/my-subpackage ->
   ~/Projects/monorepo ->
   -- completion for all subprojects -- 
 #+END_SRC
+
+[[https://github.com/flocks/monobuffer.el/raw/master/monobuffer.gif]]
 
 
 ** Customization
