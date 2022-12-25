@@ -35,9 +35,9 @@ Bind ~monorepo~ to a key in minibuffer-mode-map.
   (define-key minibuffer-mode-map (kbd "M-u") 'monorepo)
 #+END_SRC
 
-| variable                         | description                                                                    | default               |
-|----------------------------------+--------------------------------------------------------------------------------+-----------------------|
-| monobuffer--root-folder-regex    | Regex representing the pattern to find the root directory                      | ".git\\\vert.project" |
-| monobuffer--subproject-regex     | Regex representing the pattern to find all subprojects                         | "package.json"        |
-| monobuffer--exclude-folder-regex | Regex representing the folders to excludes while searching for all subprojects | "node_modules"        |
+| variable                         | description                                                                    | default                |
+|----------------------------------+--------------------------------------------------------------------------------+------------------------|
+| monobuffer--root-folder-regex    | Regex representing the pattern to find the root directory                      | ".git\\\\vert.project" |
+| monobuffer--subproject-regex     | Regex representing the pattern to find all subprojects                         | "package.json"         |
+| monobuffer--exclude-folder-regex | Regex representing the folders to excludes while searching for all subprojects | "node_modules"         |
 
