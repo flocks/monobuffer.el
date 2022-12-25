@@ -29,29 +29,35 @@ all subprojects"
       nil)))
 
 (defun monobuffer--get-root-project ()
+  "Return the path of the root project."
   (locate-dominating-file
    default-directory
    (lambda (f) (monobuffer--file-regex-exist-p monobuffer--root-folder-regex f))))
 
 ;; TODO remove root folder from the list
 (defun monobuffer--get-all-subprojects ()
+  "Return the list of all subproject in the monorepo"
   (let ((root (monobuffer--get-root-project)))
 	(mapcar #'file-name-directory
 	 (directory-files-recursively root monobuffer--subproject-regex nil
 								   (lambda (d) (not (string-match monobuffer--exclude-folder-regex d)))))))
 
 (defun monobuffer--add-trailing-slash (dir)
+  "Add a trailing slash to DIR if it's missing."
   (if (string-suffix-p "/" dir)
 	  dir
     (concat dir "/")))
 
+;; TODO check if we are in minibuffer and content is a dir
 (defun monobuffer ()
+  "Update the current path in minibuffer"
   (interactive)
   (when-let ((new-content (monobuffer--get-new-path (minibuffer-contents))))
 	(delete-minibuffer-contents)
 	(insert-and-inherit new-content)))
 
 (defun monobuffer--get-new-path (current-path)
+  "Get the new path depending on CURRENT-PATH"
   (let ((root (monobuffer--get-root-project)) 
 		(project (locate-dominating-file current-path "package.json"))
 		(current (monobuffer--add-trailing-slash current-path))
@@ -62,7 +68,6 @@ all subprojects"
 		  (locate-dominating-file current-path ".git")
 		project))))
 
-(define-key vertico-map (kbd "M-u") 'monobuffer)
 
 (provide 'monobuffer)
 
