@@ -1,0 +1,40 @@
+* Monorepo.el
+
+Small minibuffer enhancement for navigating monorepos. 
+
+** Overview
+
+Monobuffer.el provides a single minibuffer function that allows to navigate
+through the different packages in a monorepo. This function works
+incrementally, allowing to progressively explore the structure of the
+monorepo.
+
+- If the current path is deep inside a subproject, it will insert the
+  root path of this subproject
+- If the current path is already the root path of the subproject, it
+  will insert the root directory path 
+- If the current path is already the root directory path, it will
+  offer a completion to jump to any subprojects.
+
+#+BEGIN_SRC
+  ~/Projects/monorepo/packages/my-subpackage/folder/folder2/file.ts ->  
+  ~/Projects/monorepo/packages/my-subpackage ->
+  ~/Projects/monorepo ->
+  -- completion for all subprojects -- 
+#+END_SRC
+
+
+** Customization
+
+Bind ~monorepo~ to a key in minibuffer-mode-map.
+
+#+BEGIN_SRC emacs-lisp
+  (define-key minibuffer-mode-map (kbd "M-u") 'monorepo)
+#+END_SRC
+
+| variable                         | description                                                                    | default               |
+|----------------------------------+--------------------------------------------------------------------------------+-----------------------|
+| monobuffer--root-folder-regex    | Regex representing the pattern to find the root directory                      | ".git\\\vert.project" |
+| monobuffer--subproject-regex     | Regex representing the pattern to find all subprojects                         | "package.json"        |
+| monobuffer--exclude-folder-regex | Regex representing the folders to excludes while searching for all subprojects | "node_modules"        |
+
