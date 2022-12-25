@@ -1,4 +1,4 @@
-* Monorepo.el
+* Monobuffer.el
 
 Small minibuffer enhancement for navigating monorepos. 
 
