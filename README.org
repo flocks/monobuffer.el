@@ -41,3 +41,6 @@ Bind ~monorepo~ to a key in minibuffer-mode-map.
 | monobuffer--subproject-regex     | Regex representing the pattern to find all subprojects                         | "package.json"         |
 | monobuffer--exclude-folder-regex | Regex representing the folders to excludes while searching for all subprojects | "node_modules"         |
 
+** Todos
+- exclude root directory from ~(monobuffer--get-all-subprojects)~
+- in ~(monobuffer)~ ensure the current buffer is the minibuffer and the content is a path 
